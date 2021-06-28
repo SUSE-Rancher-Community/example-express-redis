@@ -1,0 +1,17 @@
+head 
+    title Today's Shopping List 
+body 
+    h1 Today's Shopping List 
+    p The following items need to be shopped:
+    p Add item: 
+        form(method="POST" action="/addvalue")
+            input(type="text", name="value", placeholder="item")
+            input(type="submit", value="Add")
+    p Remove item:   
+        form(method="POST" action="/removevalue")
+            input(type="text", name="value", placeholder="item")
+            input(type="submit", value="Remove")
+    p Currently the list contains the following items: 
+    ul 
+        for item in items
+            li= item
