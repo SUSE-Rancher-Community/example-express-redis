@@ -16,9 +16,10 @@ function readServiceParam(servicename, paramname) {
 }
 
 const redisuri = readServiceParam('shoppinglist-redis', 'uri')
+const password = readServiceParam('shoppinglist-redis', 'password')
 
 const redisdb = redis.createClient(redisuri)
-//redisdb.auth(password);
+redisdb.auth(password);
 
 const lrange = promisify(redisdb.lrange).bind(redisdb)
 const rpush = promisify(redisdb.rpush).bind(redisdb)
